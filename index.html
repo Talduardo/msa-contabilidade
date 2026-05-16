@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSA | Martins Soares & Associados — Contabilidade e Consultoria</title>
+  <meta name="description" content="MSA Contabilidade — Expertise contábil e consultoria estratégica para empresas que constroem legado. Soluções financeiras com rigor, ética e visão de longo prazo." />
+  <meta property="og:title" content="MSA | Martins Soares & Associados" />
+  <meta property="og:description" content="Contabilidade e Consultoria com propósito. Construímos o legado financeiro da sua empresa." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================
+       DESIGN SYSTEM — CSS VARIABLES
+    ================================ */
+    :root {
+      --primary:        #073673;
+      --primary-light:  #D0DCF1;
+      --accent:         #084DA6;
+      --accent-dark:    #022480;
+      --dark:           #022480;
+      --white:          #FFFFFF;
+      --gray-50:        #F4F7FC;
+      --gray-100:       #E8EEF8;
+      --gray-400:       #7A8CAD;
+      --gray-700:       #2E3D5B;
+
+      --font-display:   'Playfair Display', Georgia, serif;
+      --font-body:      'Outfit', system-ui, sans-serif;
+
+      --fs-3xl:   clamp(2.4rem, 5.5vw, 3.8rem);
+      --fs-2xl:   clamp(1.8rem, 3.5vw, 2.6rem);
+      --fs-xl:    clamp(1.3rem, 2.5vw, 1.8rem);
+      --fs-lg:    clamp(1rem, 1.8vw, 1.2rem);
+      --fs-base:  1rem;
+      --fs-sm:    0.875rem;
+
+      --space-xs:   0.5rem;
+      --space-sm:   1rem;
+      --space-md:   1.5rem;
+      --space-lg:   2.5rem;
+      --space-xl:   4rem;
+      --space-2xl:  6rem;
+
+      --radius:      12px;
+      --radius-lg:   20px;
+      --radius-full: 9999px;
+
+      --shadow-sm:  0 2px 8px rgba(7,54,115,.10);
+      --shadow-md:  0 8px 32px rgba(7,54,115,.16);
+      --shadow-lg:  0 20px 60px rgba(7,54,115,.22);
+
+      --transition: .35s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --nav-height: 80px;
+    }
+
+    /* ================================
+       RESET & BASE
+    ================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      color: var(--gray-700);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ================================
+       ANIMAÇÕES FADE-UP
+    ================================ */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .65s var(--transition), transform .65s var(--transition);
+    }
+    [data-animate].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-animate][data-delay="1"] { transition-delay: .1s; }
+    [data-animate][data-delay="2"] { transition-delay: .2s; }
+    [data-animate][data-delay="3"] { transition-delay: .3s; }
+    [data-animate][data-delay="4"] { transition-delay: .4s; }
+    [data-animate][data-delay="5"] { transition-delay: .5s; }
+
+    /* ================================
+       FOCO E ACESSIBILIDADE
+    ================================ */
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    /* ================================
+       BOTÕES
+    ================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: .9rem 2rem;
+      border-radius: var(--radius-full);
+      font-size: var(--fs-base);
+      font-weight: 600;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.65);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .btn-outline-dark:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ================================
+       SEÇÃO: LABEL / BADGES
+    ================================ */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      padding: .4rem 1rem;
+      border-radius: var(--radius-full);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+    }
+    .section-label .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ================================
+       NAVBAR
+    ================================ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-lg);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(7,54,115,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md);
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      letter-spacing: .02em;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary-light);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: .6rem 1.4rem;
+      font-size: var(--fs-sm);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: var(--space-xs);
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: var(--primary);
+      padding: var(--space-lg);
+      flex-direction: column;
+      gap: var(--space-sm);
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: rgba(255,255,255,.88);
+      font-size: var(--fs-lg);
+      font-weight: 500;
+      padding: .75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover { color: var(--white); }
+
+    /* ================================
+       HERO SECTION
+    ================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--primary);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: .12;
+      z-index: 0;
+    }
+
+    /* Geometric shapes */
+    .hero-shape-1 {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,77,166,.55) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .hero-shape-2 {
+      position: absolute;
+      bottom: -100px; left: -60px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(2,36,128,.45) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .hero-line {
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(208,220,241,.15), transparent);
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-lg) var(--space-2xl);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+
+    .hero-content { max-width: 580px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(208,220,241,.15);
+      border: 1px solid rgba(208,220,241,.3);
+      color: var(--primary-light);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      padding: .45rem 1rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+      letter-spacing: .04em;
+    }
+    .hero-badge svg { flex-shrink: 0; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-3xl);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    .hero-title .highlight {
+      color: var(--primary-light);
+      display: block;
+    }
+
+    .hero-legacy {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+    .hero-legacy-bar {
+      width: 4px;
+      height: 56px;
+      background: linear-gradient(to bottom, var(--primary-light), rgba(208,220,241,.3));
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .hero-legacy-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-style: italic;
+      color: rgba(255,255,255,.78);
+      line-height: 1.5;
+    }
+
+    .hero-desc {
+      font-size: var(--fs-lg);
+      color: rgba(255,255,255,.68);
+      line-height: 1.75;
+      margin-bottom: var(--space-lg);
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: 1px solid rgba(208,220,241,.18);
+    }
+    .stat-item { display: flex; flex-direction: column; gap: .2rem; }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-number span { color: var(--primary-light); }
+    .stat-label {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,.55);
+      font-weight: 400;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-card-stack {
+      position: relative;
+      width: 360px; height: 400px;
+    }
+    .hero-card {
+      position: absolute;
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(208,220,241,.2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: transform var(--transition);
+    }
+    .hero-card-main {
+      width: 320px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      background: rgba(8,77,166,.45);
+    }
+    .hero-card-back {
+      width: 280px;
+      top: calc(50% - 20px); left: calc(50% + 20px);
+      transform: translate(-50%, -50%) rotate(6deg);
+      z-index: 1;
+    }
+    .hero-card-back2 {
+      width: 280px;
+      top: calc(50% + 20px); left: calc(50% - 20px);
+      transform: translate(-50%, -50%) rotate(-4deg);
+      z-index: 1;
+    }
+    .card-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-sm);
+    }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .3rem;
+    }
+    .card-sub {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,.65);
+    }
+    .card-dots {
+      display: flex; gap: .4rem;
+      margin-top: var(--space-sm);
+    }
+    .card-dots span {
+      width: 24px; height: 4px;
+      border-radius: 4px;
+    }
+    .card-dots span:nth-child(1) { background: var(--primary-light); }
+    .card-dots span:nth-child(2) { background: rgba(208,220,241,.4); }
+    .card-dots span:nth-child(3) { background: rgba(208,220,241,.2); }
+
+    /* ================================
+       SOBRE NÓS SECTION
+    ================================ */
+    .sobre {
+      padding: var(--space-2xl) var(--space-lg);
+      background: var(--white);
+    }
+    .sobre-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .sobre-image-wrap {
+      position: relative;
+    }
+    .sobre-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .sobre-badge-float {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: var(--space-md) var(--space-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .sobre-badge-float .num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .sobre-badge-float .lbl {
+      font-size: var(--fs-sm);
+      color: var(--primary-light);
+      font-weight: 400;
+    }
+
+    .sobre-content { padding-left: var(--space-md); }
+    .sobre-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+    .sobre-text {
+      font-size: var(--fs-lg);
+      color: var(--gray-700);
+      line-height: 1.8;
+      margin-bottom: var(--space-lg);
+    }
+
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .mvv-item {
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      padding: var(--space-md);
+      border-top: 3px solid var(--accent);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .mvv-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+    .mvv-icon {
+      width: 40px; height: 40px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-sm);
+    }
+    .mvv-item h4 {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .3rem;
+    }
+    .mvv-item p {
+      font-size: .8rem;
+      color: var(--gray-400);
+      line-height: 1.5;
+    }
+
+    /* ================================
+       SERVIÇOS SECTION
+    ================================ */
+    .servicos {
+      padding: var(--space-2xl) var(--space-lg);
+      background: var(--gray-50);
+    }
+    .servicos-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .servicos-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--space-xl);
+    }
+    .servicos-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.25;
+      margin-bottom: var(--space-sm);
+    }
+    .servicos-sub {
+      font-size: var(--fs-lg);
+      color: var(--gray-400);
+      line-height: 1.7;
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-icon {
+      width: 56px; height: 56px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-md);
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: var(--space-sm);
+    }
+    .service-card p {
+      font-size: var(--fs-sm);
+      color: var(--gray-400);
+      line-height: 1.7;
+    }
+    .service-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--accent);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      margin-top: var(--space-md);
+      transition: gap var(--transition);
+    }
+    .service-card:hover .service-arrow { gap: .7rem; }
+
+    /* ================================
+       NÚMEROS / DIFERENCIAIS
+    ================================ */
+    .numeros {
+      padding: var(--space-xl) var(--space-lg);
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .numeros::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      opacity: .07;
+    }
+    .numeros-inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      text-align: center;
+    }
+    .numero-item { padding: var(--space-md); }
+    .numero-value {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .numero-value span { color: var(--primary-light); }
+    .numero-label {
+      font-size: var(--fs-sm);
+      color: rgba(208,220,241,.75);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* ================================
+       CONTATO SECTION
+    ================================ */
+    .contato {
+      padding: var(--space-2xl) var(--space-lg);
+      background: var(--white);
+    }
+    .contato-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contato-info { }
+    .contato-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+    .contato-sub {
+      font-size: var(--fs-lg);
+      color: var(--gray-400);
+      line-height: 1.75;
+      margin-bottom: var(--space-xl);
+    }
+
+    .contato-items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .contato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .contato-item:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-sm);
+    }
+    .contato-item-icon {
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contato-item-text strong {
+      display: block;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: var(--fs-sm);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .2rem;
+    }
+    .contato-item-text span {
+      font-size: var(--fs-base);
+      color: var(--gray-700);
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================ */
+    footer {
+      background: var(--dark);
+      padding: var(--space-xl) var(--space-lg) var(--space-lg);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid rgba(208,220,241,.1);
+    }
+
+    .footer-brand p {
+      font-size: var(--fs-sm);
+      color: rgba(208,220,241,.55);
+      line-height: 1.7;
+      margin-top: var(--space-sm);
+      max-width: 280px;
+    }
+    .footer-brand .brand {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .footer-brand .tagline {
+      font-size: .7rem;
+      color: var(--primary-light);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .footer-col h4 {
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      color: var(--primary-light);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+    }
+    .footer-col ul li { margin-bottom: .6rem; }
+    .footer-col ul li a {
+      font-size: var(--fs-sm);
+      color: rgba(208,220,241,.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--primary-light); }
+
+    .footer-bottom {
+      padding-top: var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: var(--fs-sm);
+      color: rgba(208,220,241,.35);
+    }
+    .footer-socials {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      background: rgba(208,220,241,.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .footer-socials a:hover { background: var(--accent); }
+
+    /* ================================
+       RESPONSIVIDADE
+    ================================ */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .hero-visual { display: none; }
+      .sobre-inner { grid-template-columns: 1fr; }
+      .sobre-content { padding-left: 0; }
+      .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+      .numeros-inner { grid-template-columns: repeat(2, 1fr); }
+      .contato-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { flex-wrap: wrap; gap: var(--space-md); }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .mvv-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --space-2xl: 4rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .numeros-inner { grid-template-columns: 1fr 1fr; }
+      .sobre-badge-float { position: static; margin-top: var(--space-md); display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       NAVBAR
+  =========================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <a href="#inicio" class="nav-logo" aria-label="MSA Contabilidade — Início">
+        <img src="logo.png" alt="MSA — Martins Soares & Associados" class="nav-logo-img" />
+      </a>
+
+      <!-- Links desktop -->
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <!-- CTA + Hamburger -->
+      <a href="#contato" class="btn btn-primary nav-cta">Fale Conosco</a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <nav class="nav-mobile" id="nav-mobile" aria-label="Menu mobile">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+    <a href="#contato" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:.5rem">Fale Conosco</a>
+  </nav>
+
+  <main>
+
+    <!-- ===========================
+         HERO SECTION — PRINCIPAL
+    =========================== -->
+    <section class="hero" id="inicio" aria-label="Seção principal">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-shape-1" aria-hidden="true"></div>
+      <div class="hero-shape-2" aria-hidden="true"></div>
+      <div class="hero-line" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-content">
+
+          <div class="hero-badge" data-animate>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M7 1L8.8 5.2L13 5.8L10 8.7L10.7 13L7 10.9L3.3 13L4 8.7L1 5.8L5.2 5.2L7 1Z" fill="#D0DCF1"/>
+            </svg>
+            Excelência Contábil desde 1998
+          </div>
+
+          <h1 class="hero-title" data-animate data-delay="1">
+            Construímos
+            <span class="highlight">Legado Financeiro</span>
+            para o seu negócio
+          </h1>
+
+          <div class="hero-legacy" data-animate data-delay="2">
+            <div class="hero-legacy-bar"></div>
+            <p class="hero-legacy-quote">
+              "Mais do que números — somos parceiros<br/>na construção do seu legado empresarial."
+            </p>
+          </div>
+
+          <p class="hero-desc" data-animate data-delay="3">
+            A MSA une rigor técnico, ética e visão estratégica para oferecer soluções contábeis e de consultoria que impulsionam empresas a crescerem com solidez e segurança.
+          </p>
+
+          <div class="hero-actions" data-animate data-delay="4">
+            <a href="#contato" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Fale com um Especialista
+            </a>
+            <a href="#servicos" class="btn btn-outline">
+              Nossos Serviços
+            </a>
+          </div>
+
+          <div class="hero-stats" data-animate data-delay="5">
+            <div class="stat-item">
+              <span class="stat-number">25<span>+</span></span>
+              <span class="stat-label">Anos de experiência</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">500<span>+</span></span>
+              <span class="stat-label">Clientes ativos</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">98<span>%</span></span>
+              <span class="stat-label">Satisfação dos clientes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual decorativo -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card-stack">
+            <div class="hero-card hero-card-back2">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#D0DCF1" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="#D0DCF1" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="#D0DCF1" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="card-title">Consultoria</div>
+              <div class="card-sub">Planejamento Estratégico</div>
+            </div>
+            <div class="hero-card hero-card-back">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="3" width="20" height="14" rx="2" stroke="#D0DCF1" stroke-width="2"/>
+                  <path d="M8 21H16M12 17V21" stroke="#D0DCF1" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="card-title">Fiscal & Tributário</div>
+              <div class="card-sub">Otimização de impostos</div>
+            </div>
+            <div class="hero-card hero-card-main">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3V21H21" stroke="#D0DCF1" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M7 16L11 10L15 13L20 7" stroke="#D0DCF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="card-title">Contabilidade</div>
+              <div class="card-sub">Gerencial & Financeiro</div>
+              <div class="card-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         SOBRE NÓS SECTION
+    =========================== -->
+    <section class="sobre" id="sobre" aria-label="Sobre a MSA">
+      <div class="sobre-inner">
+
+        <!-- Imagem -->
+        <div class="sobre-image-wrap" data-animate>
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            alt="Equipe MSA Contabilidade em reunião de trabalho"
+            class="sobre-image"
+            loading="lazy"
+          />
+          <div class="sobre-badge-float">
+            <div class="num">25+</div>
+            <div class="lbl">Anos de Legado</div>
+          </div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="sobre-content">
+          <div class="section-label" data-animate>
+            <span class="dot"></span>
+            Sobre a MSA
+          </div>
+          <h2 class="sobre-title" data-animate data-delay="1">
+            Parceiros na construção do seu sucesso financeiro
+          </h2>
+          <p class="sobre-text" data-animate data-delay="2">
+            Fundada em 1998, a <strong>Martins Soares & Associados</strong> nasceu com um propósito claro: transformar a contabilidade em uma ferramenta estratégica para o crescimento empresarial. Com mais de duas décadas de atuação, nos tornamos referência em contabilidade e consultoria para empresas de todos os portes.
+          </p>
+          <p class="sobre-text" data-animate data-delay="3">
+            Nossa equipe multidisciplinar combina expertise técnica e visão de negócio para entregar soluções que vão muito além do cumprimento das obrigações fiscais — geramos inteligência financeira para o seu negócio.
+          </p>
+
+          <div class="mvv-grid" data-animate data-delay="4">
+            <div class="mvv-item">
+              <div class="mvv-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M10 2L12.2 7.6L18 8.3L14 12.1L15.1 18L10 15.1L4.9 18L6 12.1L2 8.3L7.8 7.6L10 2Z" fill="#073673"/>
+                </svg>
+              </div>
+              <h4>Missão</h4>
+              <p>Simplificar a gestão contábil e gerar valor estratégico para nossos clientes.</p>
+            </div>
+            <div class="mvv-item">
+              <div class="mvv-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="#073673" stroke-width="2"/>
+                  <path d="M10 6V10L13 12" stroke="#073673" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Visão</h4>
+              <p>Ser a consultoria contábil mais confiável do Brasil até 2030.</p>
+            </div>
+            <div class="mvv-item">
+              <div class="mvv-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10L8 14L16 6" stroke="#073673" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4>Valores</h4>
+              <p>Ética, transparência, excelência e compromisso com resultados.</p>
+            </div>
+          </div>
+
+          <div data-animate data-delay="5">
+            <a href="#contato" class="btn btn-primary">Conheça nossa equipe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         SERVIÇOS SECTION
+    =========================== -->
+    <section class="servicos" id="servicos" aria-label="Nossos serviços">
+      <div class="servicos-inner">
+        <div class="servicos-header">
+          <div class="section-label" data-animate>
+            <span class="dot"></span>
+            Nossos Serviços
+          </div>
+          <h2 class="servicos-title" data-animate data-delay="1">
+            Soluções completas para a saúde financeira da sua empresa
+          </h2>
+          <p class="servicos-sub" data-animate data-delay="2">
+            Do registro contábil ao planejamento estratégico, a MSA oferece uma gama completa de serviços para empresas que buscam crescer com segurança.
+          </p>
+        </div>
+
+        <div class="servicos-grid">
+
+          <!-- Card 1 -->
+          <article class="service-card" data-animate data-delay="1">
+            <div class="service-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M4 4H24V24H4V4Z" rx="3" stroke="#073673" stroke-width="2"/>
+                <path d="M9 14H19M9 10H19M9 18H14" stroke="#073673" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Contabilidade Gerencial</h3>
+            <p>Escrituração contábil completa, demonstrações financeiras e relatórios gerenciais que apoiam a tomada de decisão estratégica.</p>
+            <span class="service-arrow">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="service-card" data-animate data-delay="2">
+            <div class="service-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M14 3L25 8V15C25 20.5 20.1 25.7 14 27C7.9 25.7 3 20.5 3 15V8L14 3Z" stroke="#073673" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M9 14L12.5 17.5L19 11" stroke="#073673" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Planejamento Tributário</h3>
+            <p>Análise e estruturação do regime tributário ideal para a sua empresa, reduzindo a carga fiscal de forma legal e estratégica.</p>
+            <span class="service-arrow">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="service-card" data-animate data-delay="3">
+            <div class="service-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect x="4" y="4" width="20" height="20" rx="3" stroke="#073673" stroke-width="2"/>
+                <path d="M4 10H24" stroke="#073673" stroke-width="2"/>
+                <path d="M10 4V10" stroke="#073673" stroke-width="2"/>
+                <path d="M18 4V10" stroke="#073673" stroke-width="2"/>
+                <path d="M8 16H12M16 16H20M8 20H11" stroke="#073673" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Departamento Pessoal</h3>
+            <p>Folha de pagamento, admissões, demissões, obrigações trabalhistas e previdenciárias com total conformidade legal.</p>
+            <span class="service-arrow">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="service-card" data-animate data-delay="1">
+            <div class="service-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <circle cx="14" cy="14" r="10" stroke="#073673" stroke-width="2"/>
+                <path d="M14 8V14L18 17" stroke="#073673" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Consultoria Financeira</h3>
+            <p>Análise de fluxo de caixa, estruturação financeira, valuation e assessoria para captação de recursos e crescimento sustentável.</p>
+            <span class="service-arrow">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="service-card" data-animate data-delay="2">
+            <div class="service-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M5 7H23L21 21H7L5 7Z" stroke="#073673" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M5 7L4 4H2" stroke="#073673" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="10" cy="24" r="1.5" fill="#073673"/>
+                <circle cx="18" cy="24" r="1.5" fill="#073673"/>
+                <path d="M11 12H17M14 9V15" stroke="#073673" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Abertura e Regularização</h3>
+            <p>Constituição, alteração e encerramento de empresas. Regularização de débitos fiscais, tributários e previdenciários.</p>
+            <span class="service-arrow">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="service-card" data-animate data-delay="3">
+            <div class="service-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M4 20V10L14 4L24 10V20L14 24L4 20Z" stroke="#073673" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M14 24V14M4 10L14 14M24 10L14 14" stroke="#073673" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Auditoria Interna</h3>
+            <p>Avaliação independente dos processos contábeis, financeiros e controles internos para garantir integridade e conformidade.</p>
+            <span class="service-arrow">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         NÚMEROS / DIFERENCIAIS
+    =========================== -->
+    <section class="numeros" aria-label="Nossos números">
+      <div class="numeros-inner">
+        <div class="numero-item" data-animate>
+          <div class="numero-value">500<span>+</span></div>
+          <div class="numero-label">Empresas atendidas<br/>em todo o Brasil</div>
+        </div>
+        <div class="numero-item" data-animate data-delay="1">
+          <div class="numero-value">25<span>+</span></div>
+          <div class="numero-label">Anos de experiência<br/>e solidez no mercado</div>
+        </div>
+        <div class="numero-item" data-animate data-delay="2">
+          <div class="numero-value">98<span>%</span></div>
+          <div class="numero-label">Índice de satisfação<br/>dos nossos clientes</div>
+        </div>
+        <div class="numero-item" data-animate data-delay="3">
+          <div class="numero-value">40<span>+</span></div>
+          <div class="numero-label">Especialistas dedicados<br/>ao seu negócio</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         CONTATO SECTION
+    =========================== -->
+    <section class="contato" id="contato" aria-label="Entre em contato">
+      <div class="contato-inner">
+
+        <!-- Informações -->
+        <div class="contato-info">
+          <div class="section-label" data-animate>
+            <span class="dot"></span>
+            Entre em Contato
+          </div>
+          <h2 class="contato-title" data-animate data-delay="1">
+            Vamos construir o futuro da sua empresa juntos
+          </h2>
+          <p class="contato-sub" data-animate data-delay="2">
+            Nossa equipe de especialistas está pronta para entender as necessidades do seu negócio e apresentar a solução ideal. Fale conosco.
+          </p>
+
+          <div class="contato-items" data-animate data-delay="3">
+            <div class="contato-item">
+              <div class="contato-item-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 12C13.2091 12 15 10.2091 15 8C15 5.79086 13.2091 4 11 4C8.79086 4 7 5.79086 7 8C7 10.2091 8.79086 12 11 12Z" stroke="white" stroke-width="1.8"/>
+                  <path d="M3 20C3 16.134 6.68629 13 11 13C15.3137 13 19 16.134 19 20" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="contato-item-text">
+                <strong>Endereço</strong>
+                <span>Av. Paulista, 1842 — São Paulo, SP, 01310-945</span>
+              </div>
+            </div>
+
+            <div class="contato-item">
+              <div class="contato-item-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 4H8L10 9L7.5 10.5C8.57 12.6 9.4 13.43 11.5 14.5L13 12L18 14V18C18 18 16 20 11 18C6 16 4 10 4 4Z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="contato-item-text">
+                <strong>Telefone</strong>
+                <span>(11) 3000-0000 | (11) 9 9000-0000</span>
+              </div>
+            </div>
+
+            <div class="contato-item">
+              <div class="contato-item-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="3" y="5" width="16" height="13" rx="2" stroke="white" stroke-width="1.8"/>
+                  <path d="M3 9L11 14L19 9" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="contato-item-text">
+                <strong>E-mail</strong>
+                <span>contato@msacontabilidade.com.br</span>
+              </div>
+            </div>
+
+            <div class="contato-item">
+              <div class="contato-item-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <circle cx="11" cy="11" r="8" stroke="white" stroke-width="1.8"/>
+                  <path d="M11 7V11L14 13" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="contato-item-text">
+                <strong>Horário de Atendimento</strong>
+                <span>Segunda a Sexta, das 8h às 18h</span>
+              </div>
+            </div>
+
+            <a href="mailto:contato@msacontabilidade.com.br" class="btn btn-primary" style="margin-top: var(--space-sm); align-self: flex-start; width: 100%; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M2 9L16 2L9 16L7.5 10.5L2 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+              Enviar Mensagem
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="logo.png" alt="MSA — Martins Soares & Associados" style="height:48px; width:auto; object-fit:contain; margin-bottom: var(--space-sm);" />
+          <p>Há mais de 25 anos construindo legados financeiros e sendo parceiros estratégicos de empresas que buscam crescer com segurança, ética e inteligência.</p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Contabilidade Gerencial</a></li>
+            <li><a href="#servicos">Planejamento Tributário</a></li>
+            <li><a href="#servicos">Departamento Pessoal</a></li>
+            <li><a href="#servicos">Consultoria Financeira</a></li>
+            <li><a href="#servicos">Auditoria Interna</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="tel:+551130000000">(11) 3000-0000</a></li>
+            <li><a href="mailto:contato@msacontabilidade.com.br">contato@msacontabilidade.com.br</a></li>
+            <li><a href="#contato">Av. Paulista, 1842</a></li>
+            <li><a href="#contato">São Paulo, SP</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2024 MSA — Martins Soares & Associados Contabilidade. Todos os direitos reservados.
+        </p>
+        <div class="footer-socials">
+          <a href="#" aria-label="LinkedIn da MSA Contabilidade">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M3 6H6V15H3V6ZM4.5 5C5.33 5 6 4.33 6 3.5S5.33 2 4.5 2 3 2.67 3 3.5 3.67 5 4.5 5ZM8 6H11V7.5C11.5 6.5 12.8 6 14 6C16.2 6 17 7.5 17 10V15H14V10.5C14 9.5 13.5 9 12.7 9C11.9 9 11 9.5 11 11V15H8V6Z" fill="white" opacity=".7"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram da MSA Contabilidade">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="14" height="14" rx="4" stroke="white" stroke-width="1.5" opacity=".7"/>
+              <circle cx="9" cy="9" r="3" stroke="white" stroke-width="1.5" opacity=".7"/>
+              <circle cx="13.5" cy="4.5" r="1" fill="white" opacity=".7"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook da MSA Contabilidade">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M10 2C8 2 7 3 7 5V7H5V10H7V16H10V10H12.5L13 7H10V5.5C10 5 10.3 5 11 5H13V2.3C12.5 2.1 11.4 2 10 2Z" fill="white" opacity=".7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       JAVASCRIPT
+  =========================== -->
+  <script>
+    // 1. Navbar scroll behavior
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // 2. Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    // 3. Fechar menu mobile ao clicar em link
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // 4. IntersectionObserver — animações fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+    // 5. Smooth scroll — fallback para browsers sem suporte nativo
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // 6. Parallax leve no hero (mousemove)
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg && window.matchMedia('(pointer: fine)').matches) {
+      document.querySelector('.hero').addEventListener('mousemove', e => {
+        const { innerWidth: W, innerHeight: H } = window;
+        const x = (e.clientX / W - .5) * 20;
+        const y = (e.clientY / H - .5) * 12;
+        heroBg.style.transform = `translate(${x}px, ${y}px) scale(1.04)`;
+      });
+    }
+
+  </script>
+
+</body>
+</html>
